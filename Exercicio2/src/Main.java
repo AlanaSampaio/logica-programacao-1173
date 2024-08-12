@@ -4,28 +4,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        double altura, peso, soma=0;
-        System.out.println("Insira sua altura(m) e peso(kg) respectivamente: ");
-        altura = sc.nextDouble();
-        peso = sc.nextDouble();
+        System.out.println("Quantas provas você fez?");
+        int provas = sc.nextInt();
 
-        soma = peso/(altura*altura);
+        int maior = 0, menor = 100, soma = 0, media, nota;
+        for (int i = 0; i < provas; i++) {
+            System.out.printf("Qual a nota da sua %s prova (nota de 0 a 100): ", i+1);
+            nota = sc.nextInt();
 
-        if(soma < 17) {
-            System.out.println("Muito abaixo do peso");
-        } else if (soma >= 17 && soma < 18.50) {
-            System.out.println("Abaixo do peso");
-        } else if (soma >= 18.50 && soma < 25) {
-            System.out.println("Peso normal");
-        } else if (soma >= 25 && soma < 30) {
-            System.out.println("Acima do peso");
-        } else if (soma >= 30 && soma < 35) {
-            System.out.println("Obesidade I");
-        } else if (soma >= 35 && soma < 40) {
-            System.out.println("Obesidade II (severa)");
-        } else if (soma >= 40) {
-            System.out.println("Obesidade III (mórbida)");
+            soma += nota;
+            if (nota > maior) {
+                maior = nota;
+            }
+            if (nota < menor) {
+                menor = nota;
+            }
         }
+
+        media = soma/provas;
+
+        System.out.printf("A maior nota: %s \nA menor nota: %s \nA média de notas: %s", maior, menor, media);
 
         sc.close();
     }
